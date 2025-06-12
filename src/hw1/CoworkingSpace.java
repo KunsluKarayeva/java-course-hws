@@ -1,35 +1,47 @@
 package hw1;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 
 public class CoworkingSpace {
     private final int id;
     private final String type;
-    private final double price;
+    private final BigDecimal hourlyPrice;
     private final List<Reservation> reservations = new ArrayList<>();
 
-    public CoworkingSpace(int id, String type, double price) {
+    public CoworkingSpace(int id, String type, BigDecimal hourlyPrice) {
         this.id = id;
         this.type = type;
-        this.price = price;
-
+        this.hourlyPrice = hourlyPrice;
     }
 
-    public int getId() { return id; }
-    public String getType() { return type; }
-    public double getPrice() { return price; }
-    public List<Reservation> getReservations() { return reservations; }
+    public int getId() {
+        return this.id;
+    }
+
+    public BigDecimal getHourlyPrice() {
+        return this.hourlyPrice;
+    }
+
+    public List<Reservation> getReservations() {
+        return this.reservations;
+    }
+
+    public String getType() {
+        return type;
+    }
 
     @Override
     public String toString() {
-        return "CoworkingSpace" +
-                "\nid=" + id +
+        return "CoworkingSpace{" +
+                "id=" + id +
                 ", type='" + type + '\'' +
-                ", price=" + price +
-                ", reservations=" + reservations;
+                ", price=$" + hourlyPrice +
+                '}';
     }
 }
 
@@ -39,26 +51,45 @@ class Reservation {
     private final LocalDate date;
     private final LocalTime startTime;
     private final LocalTime endTime;
+    private final BigDecimal price;
 
-    public Reservation(int id, String username, LocalDate date, LocalTime startTime, LocalTime endTime) {
+    public Reservation(int id, String username, LocalDate date, LocalTime startTime, LocalTime endTime, BigDecimal price) {
         this.id = id;
         this.username = username;
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
+        this.price = price;
     }
 
-    public int getId() { return id; }
-    public String getUsername() { return username; }
-    public LocalDate getDate() { return date; }
-    public LocalTime getStartTime() { return startTime; }
-    public LocalTime getEndTime() { return endTime; }
+    public int getId() {
+        return this.id;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public LocalDate getDate() {
+        return this.date;
+    }
+
+    public LocalTime getStartTime() {
+        return this.startTime;
+    }
+
+    public LocalTime getEndTime() {
+        return this.endTime;
+    }
 
     @Override
     public String toString() {
-        return "Reservation: " +
+        return "Reservation{" +
                 "id=" + id +
+                ", username='" + username + '\'' +
                 ", date=" + date +
-                ", time=" + startTime + "-" + endTime;
+                ", Time=" + startTime + "-" + endTime +
+                ", reservationPrice=" + price +
+                '}';
     }
 }
